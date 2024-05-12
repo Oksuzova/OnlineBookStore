@@ -2,6 +2,7 @@ package com.onlinebookstore.OnlineBookStore.controller;
 
 import javax.servlet.http.HttpSession;
 
+import com.onlinebookstore.OnlineBookStore.services.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,10 +15,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.onlinebookstore.OnlineBookStore.models.User;
-import com.onlinebookstore.OnlineBookStore.services.BookCategoryService;
-import com.onlinebookstore.OnlineBookStore.services.BookService;
-import com.onlinebookstore.OnlineBookStore.services.CartService;
-import com.onlinebookstore.OnlineBookStore.services.userService;
 import com.onlinebookstore.OnlineBookStore.models.Book;
 import com.onlinebookstore.OnlineBookStore.models.BookCategory;
 import com.onlinebookstore.OnlineBookStore.models.Cart;
@@ -38,6 +35,8 @@ public class UserController {
     private BookCategoryService bookCategoryService;
 	@Autowired
     private CartService cartService;
+	@Autowired
+	private OrderService orderService;
 	
 //--------------------------------------------------------------------------------------------------------------------------------------	
 
@@ -168,10 +167,16 @@ public class UserController {
 	}
 
 // Display Order details
-	@GetMapping("/user/orderDetails/{order.orderId}")
-	public String showOrderDetails() {
-
-	}
+	@GetMapping("/user/orderDetails/{orderId}")
+	public String showOrderDetails(@PathVariable Long orderId, HttpSession session, Model model) {
+		User user = (User) session.getAttribute("user");
+		if (user == null) {
+			return "redirect:/login";
+		}
+		Order order =  orderService.getOrderById(orderId);
+		model.addAttribute("Order", order);
+        return "order";
+    }
 
 //	Log Out User and Invalidate Session
     @GetMapping("/logout")
