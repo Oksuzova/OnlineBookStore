@@ -1,5 +1,8 @@
 .m2
-target/*
 *.class
 .env
 .idea
+.classpath
+.project
+.settings/
+target/
