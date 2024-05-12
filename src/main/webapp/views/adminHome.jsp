@@ -32,17 +32,17 @@
          <p class="lead">Manage your data from this Admin Panel</p>
       </div>
       <div class="container">
-         <div class="row justify-content-center">
-            <div class="col-sm-3 pt-4">
-               <div class="card border border-info">
+         <div class="card-group">
+
+               <div class="card">
                   <div class="card-body text-center">
                      <h4 class="card-title">Book Categories</h4>
-                     <p>Manage the book categories here.</p>
-                     <a href="/admin/book-categories" class="card-link btn btn-primary">Manage</a>
+                     <p>Manage categories here.</p>
+                     <a href="/admin/book-categories" class="card-link btn btn-primary">Manage Categories</a>
                   </div>
                </div>
-            </div>
-            <div class="col-sm-3 pt-4">
+
+
                <div class="card">
                   <div class="card-body text-center">
                      <h4 class="card-title">Manage Books</h4>
@@ -50,16 +50,23 @@
                      <a href="${pageContext.request.contextPath}/admin/manageBooks" class="card-link btn btn-primary">Manage Books</a>
                   </div>
                </div>
-            </div>
-            <div class="col-sm-3 pt-4">
+
                <div class="card">
                   <div class="card-body text-center">
                      <h4 class="card-title">Users</h4>
                      <p>Manage all the users here.</p>
-                     <a href="/admin/users" class="card-link btn btn-primary">Manage</a>
+                     <a href="/admin/users" class="card-link btn btn-primary">Manage Users</a>
                   </div>
                </div>
-            </div>
+
+               <div class="card">
+                  <div class="card-body text-center">
+                     <h4 class="card-title">Orders</h4>
+                     <p>Manage orders here.</p>
+                     <a href="/admin/orders" class="card-link btn btn-primary">Manage Orders</a>
+                  </div>
+               </div>
+
          </div>
       </div>
       <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"

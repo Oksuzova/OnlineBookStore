@@ -28,27 +28,33 @@
             <c:when test="${mode == 'MODE_UPDATE'}">
                <form action="/admin/update-user" method="post">
                   <input type="hidden" name="id" value="<c:out value="${user.id}"/>" />
+
                   <div class="form-group">
                      <label for="firstName">First Name:</label>
                      <input type="text" id="firstName" name="firstName" class="form-control" value="<c:out value="${user.firstName}"/>" required>
                   </div>
+
                   <div class="form-group">
                      <label for="lastName">Last Name:</label>
                      <input type="text" id="lastName" name="lastName" class="form-control" value="<c:out value="${user.lastName}"/>" required>
                   </div>
+
                   <div class="form-group">
                      <label for="username">Username:</label>
                      <input type="text" id="username" name="username" class="form-control" value="<c:out value="${user.username}"/>" required>
                   </div>
+
                   <div class="form-group">
                      <label for="password">Password:</label>
                      <input type="password" id="password" name="password" class="form-control" value="<c:out value="${user.password}"/>" required>
                      <input type="checkbox" onclick="togglePassword()"> Show Password
                   </div>
+
                   <div class="form-group">
                      <label for="email">Email:</label>
                      <input type="email" id="email" name="email" class="form-control" value="<c:out value="${user.email}"/>" required>
                   </div>
+
                   <div class="form-group">
                      <label for="role">Role:</label>
                      <select id="role" name="role" class="form-control" required>
@@ -56,6 +62,7 @@
                         <option value="ROLE_ADMIN" <c:if test="${user.role == 'ROLE_ADMIN'}">selected</c:if>>Admin</option>
                      </select>
                   </div>
+
                   <input type="submit" value="Update" class="btn btn-primary update-button">
                   <a href="javascript:history.back()" class="btn btn-secondary back-button">Back</a>
                </form>

@@ -11,7 +11,6 @@ public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long orderId;
-    
 
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)  // Correct, assuming the column name in DB is user_id

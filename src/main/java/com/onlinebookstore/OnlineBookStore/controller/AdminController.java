@@ -5,6 +5,9 @@ import java.io.File;
 import java.io.IOException;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
+
+import com.onlinebookstore.OnlineBookStore.models.Order;
+import com.onlinebookstore.OnlineBookStore.services.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -30,7 +33,8 @@ public class AdminController {
     private BookCategoryService bookCategoryService;
 	@Autowired
     private BookService bookService;
-	
+    @Autowired
+    private OrderService orderService;
 //--------------------------------------------------------------------------------------------------------------------------------------	
 //	Display the Admin Home Page
 	@GetMapping("/home")
@@ -294,4 +298,49 @@ public class AdminController {
         return "redirect:/admin/manageBooks";
     }
 
+//-------------------------------------------------------------------------------------------------------------------------------------------------------------
+//***ORDER CATEGORY OPERATION***
+//	Show User Management Page for Admin
+@GetMapping("orders")
+public String adminOrdersPage(Model model) {
+    List<Order> orders = orderService.getOrders();
+    model.addAttribute("orders", orders);
+    return "adminOrdersPage";
+}
+//	Delete a Order by ID
+@GetMapping("/delete-order")
+public String deleteOrder(@RequestParam("id") Long id) {
+    orderService.deleteOrderById(id);
+    return "redirect:/admin/orders";
+}
+    //	Edit User Details Form
+@GetMapping("/edit-order")
+public String editOrder(@RequestParam("id") Long id, Model model) {
+    Order order = orderService.getOrderById(id);
+    if (order != null) {
+        model.addAttribute("order", order);
+        model.addAttribute("mode", "MODE_UPDATE");
+    } else {
+        throw new RuntimeException("Order not found");
+    }
+    return "adminOrdersPage";
+}
+
+//    	Update User Information
+    @PostMapping("/update-order")
+    public String updateOrder(@ModelAttribute("order") Order order, Model model) {
+        if (order.getOrderId() == null) {
+            model.addAttribute("error", "Order ID cannot be null.");
+            return "redirect:/admin/orders"; // Redirect back to the user form with an error message
+        }
+
+        try {
+            orderService.updateOrder(order);
+        } catch (RuntimeException e) {
+            model.addAttribute("error", "Error updating user: " + e.getMessage());
+            return "redirect:/admin"; // Redirect back to the user form with an error message
+        }
+
+        return "redirect:/admin/orders"; // Redirect after POST to prevent duplicate submissions
+    }
 }
