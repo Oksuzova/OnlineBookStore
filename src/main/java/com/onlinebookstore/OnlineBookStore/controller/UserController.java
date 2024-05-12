@@ -45,11 +45,11 @@ public class UserController {
 	  public String showUserProfile(Model model, HttpSession session) {
 	      User sessionUser = (User) session.getAttribute("user");
 	      if (sessionUser == null) {
-	          return "redirect:/login";
+	          return "redirect:/user-login";
 	      }
 	      User user = userService.findByUsername(sessionUser.getUsername());
 	      if (user == null) {
-	          return "redirect:/login";
+	          return "redirect:/user-login";
 	      }
 	      model.addAttribute("user", user);
 	      return "userProfile";
@@ -60,7 +60,7 @@ public class UserController {
 	public String updateUser(@ModelAttribute("user") User formUser, HttpSession session, Model model) {
 	    User sessionUser = (User) session.getAttribute("user");
 	    if (sessionUser == null) {
-	        return "redirect:/login";
+	        return "redirect:/user-login";
 	    }
 	    formUser.setId(sessionUser.getId());	    
 	    try {
@@ -115,7 +115,7 @@ public class UserController {
 	public String showCart(Model model, HttpSession session) {
 	    User user = (User) session.getAttribute("user");  // Fetch the user from session
 	    if (user == null) {
-	        return "redirect:/login"; // Not logged in or session expired
+	        return "redirect:/user-login"; // Not logged in or session expired
 	    }
 	    Cart cart = cartService.getCurrentCart(user.getId());
 	    if (cart == null) {
@@ -143,7 +143,7 @@ public class UserController {
     public String checkout(HttpSession session, RedirectAttributes redirectAttributes) {
         User user = (User) session.getAttribute("user");
         if (user == null) {
-            return "redirect:/login";
+            return "redirect:/user-login";
         }
         try {
             cartService.checkout(user.getId());
@@ -159,7 +159,7 @@ public class UserController {
 	public String showUserOrders(Model model, HttpSession session) {
 	    User user = (User) session.getAttribute("user");
 	    if (user == null) {
-	        return "redirect:/login";
+	        return "redirect:/user-login";
 	    }
 	    List<Order> userOrders = cartService.getOrdersByUsername(user.getUsername());
 	    model.addAttribute("userOrders", userOrders);
@@ -167,14 +167,14 @@ public class UserController {
 	}
 
 // Display Order details
-	@GetMapping("/user/orderDetails/{orderId}")
+	@GetMapping("/orderDetails/{orderId}")
 	public String showOrderDetails(@PathVariable Long orderId, HttpSession session, Model model) {
 		User user = (User) session.getAttribute("user");
 		if (user == null) {
-			return "redirect:/login";
+			return "redirect:/user-login";
 		}
 		Order order =  orderService.getOrderById(orderId);
-		model.addAttribute("Order", order);
+		model.addAttribute("order", order);
         return "order";
     }
 
