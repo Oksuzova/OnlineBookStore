@@ -6,7 +6,7 @@
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <title>User Home - Online Bookstore</title>
-      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
    </head>
    <body class="bg-light">
       <!-- Navigation bar, similar to the one provided -->
@@ -61,9 +61,15 @@
                         <p class="card-text"><b>Price:</b> ${book.price}</p>
                         <p class="card-text"><b>Available Quantity:</b> ${book.stock}</p>
                         <!-- Update Button -->
-                        <form action="/user/addToCart/${book.id}" method="post">
-                           <button type="submit" class="btn btn-primary update-button">Add to Cart</button>
-                        </form>
+                        <div class="row">
+                           <div class="col-6">
+                           <form action="/user/addToCart/${book.id}" method="post">
+                              <button type="submit" class="btn btn-primary update-button">Add to Cart</button>
+                           </form>
+                           </div>
+                           <div class="col-6">
+                                 <a class="btn btn-primary" href="/user/books/${book.id}">detail...</a>
+                           </div>
                      </div>
                   </div>
                </div>

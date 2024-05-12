@@ -1,0 +1,5 @@
+.m2
+target/*
+*.class
+.env
+.idea

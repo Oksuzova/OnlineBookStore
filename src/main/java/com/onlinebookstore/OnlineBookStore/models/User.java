@@ -1,6 +1,8 @@
 package com.onlinebookstore.OnlineBookStore.models;
 
 import javax.persistence.*;
+import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "users")
@@ -32,6 +34,9 @@ public class User {
     
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY, optional = false)
     private Cart cart;
+
+    @OneToMany(mappedBy = "user")
+    private List<BookReview> reviews;
    
 	// Constructors
     public User() {}

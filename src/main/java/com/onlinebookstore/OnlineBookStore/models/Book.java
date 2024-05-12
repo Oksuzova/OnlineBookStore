@@ -1,6 +1,13 @@
 package com.onlinebookstore.OnlineBookStore.models;
 
+import lombok.Getter;
+
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
+
+import static com.fasterxml.jackson.databind.type.LogicalType.Collection;
 
 @Entity
 @Table(name = "books")
@@ -16,8 +23,11 @@ public class Book {
     private String image;
     private Double price;
     private Integer stock;
-    private String description;
-    
+
+	@Column(name = "description", length = 4096)
+	private String description;
+
+
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "category_id")
     private BookCategory category;
@@ -29,6 +39,10 @@ public class Book {
         }
         return category;
     }
+
+	@Getter
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "book", cascade = CascadeType.ALL)
+	private List<BookReview> reviews = new ArrayList<BookReview>();
 
     public void setCategory(BookCategory category) {
         this.category = category;
@@ -89,7 +103,4 @@ public class Book {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	
-	
-    
 }

@@ -99,16 +99,24 @@ public class UserController {
 
         User user = (User) session.getAttribute("user");
         if (user != null) {
-            try {
-                cartService.addBookToCart(user.getId(), bookId, 1); // assuming quantity is always 1 for simplicity
-                redirectAttributes.addFlashAttribute("successMessage", "Book added to cart successfully!");
-            } catch (Exception e) {
-                redirectAttributes.addFlashAttribute("errorMessage", "There was a problem adding the book to the cart.");
-            }
-            return "redirect:/user/home";
+			cartService.addBookToCart(user.getId(), bookId, 1); // assuming quantity is always 1 for simplicity
         }
         return "redirect:/user-login";
     }
+
+	@GetMapping("/books/{bookId}")
+	public String getBook(HttpSession session,
+				   @PathVariable Long bookId,
+				   Model model){
+		User user = (User) session.getAttribute("user");
+		if (user != null) {
+			Book book = bookService.getBookById(bookId);
+			model.addAttribute("book", book);
+			model.addAttribute("user", user);
+			return "userBook";
+		}
+		return "redirect:/user-login";
+	}
 	
 //	Display User's Shopping Cart
 	@GetMapping("/cart")
