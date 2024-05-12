@@ -19,14 +19,14 @@
                      <p class="text-50 mb-5">Please chous you login option</p>
 
                      <div data-mdb-input-init class="form-outline form mb-4">
-                        <a class="btn btn-outline-secondary form-control form-control-lg" href="/admin-login" role="button">Admin</a>
+                        <a class="btn btn-outline-secondary form-control form-control-lg" href="${pageContext.request.contextPath}/admin-login" role="button">Admin</a>
                      </div>
 
                      <div data-mdb-input-init class="form-outline form mb-4">
-                        <a class="btn btn-outline-secondary form-control form-control-lg" href="/user-login" role="button">User</a>
+                        <a class="btn btn-outline-secondary form-control form-control-lg" href="${pageContext.request.contextPath}/user-login" role="button">User</a>
                      </div>
 
-                     <p class="small mb-5 pb-lg-2"><a class="text-50" href="/registration">Register new user</a></p>
+                     <p class="small mb-5 pb-lg-2"><a class="text-50" href="${pageContext.request.contextPath}/registration">Register new user</a></p>
 
                   </div>
 
