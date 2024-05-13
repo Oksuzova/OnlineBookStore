@@ -100,8 +100,10 @@ public class UserController {
         User user = (User) session.getAttribute("user");
         if (user != null) {
 			cartService.addBookToCart(user.getId(), bookId, 1); // assuming quantity is always 1 for simplicity
-        }
-        return "redirect:/user-login";
+			redirectAttributes.addFlashAttribute("successMessage", "Book added to cart successfully!");
+			return "redirect:/user/home";
+		}
+		return "redirect:/user-login";
     }
 
 	@GetMapping("/books/{bookId}")

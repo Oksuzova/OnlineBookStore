@@ -1,6 +1,7 @@
 package com.onlinebookstore.OnlineBookStore.models;
 
 import lombok.Data;
+import lombok.Getter;
 
 import javax.persistence.*;
 import java.util.HashSet;
@@ -11,11 +12,13 @@ import java.util.Set;
 @Table(name = "book_categories")
 @Data
 public class BookCategory {
+    @Getter
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", updatable = false, nullable = false)
     private Long id;
     
+    @Getter
     @Column(name = "name")
     private String name;
     
@@ -27,6 +30,13 @@ public class BookCategory {
         books = new HashSet<>();
     }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
     public Set<Book> getBooks() {
         if (this.books == null) {
             this.books = new HashSet<>();
