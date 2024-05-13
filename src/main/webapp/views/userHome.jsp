@@ -13,7 +13,7 @@
       <!-- ... -->
       <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
          <div class="container-fluid">
-            <a class="navbar-brand" href="#">Online Bookstore</a>
+            <a class="navbar-brand" href="${pageContext.request.contextPath}/user/home">Online Bookstore</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse"
                data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                aria-expanded="false" aria-label="Toggle navigation">
@@ -24,7 +24,11 @@
                   <li class="nav-item"><a class="nav-link" href="/user/profile">Profile</a></li>
                   <li class="nav-item"><a class="nav-link" href="/user/cart">Cart</a></li>
                   <li class="nav-item"><a class="nav-link" href="/user/orders?userId=${user.id}">My Orders</a></li>
-                  <li class="nav-item"><a class="nav-link" href="/user/logout">Logout</a></li>
+               </ul>
+               <ul class="navbar-nav ms-auto">
+                  <li class="nav-item">
+                     <a class="nav-link" href="/user/logout" data-bs-target="#myModal" data-bs-toggle="modal">Logout</a>
+                  </li>
                </ul>
             </div>
          </div>

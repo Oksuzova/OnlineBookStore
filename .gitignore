@@ -1,5 +1,5 @@
 .m2
-*.class
+.class
 .env
 .idea
 .classpath
