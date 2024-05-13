@@ -48,16 +48,29 @@
                <p><b>Description:</b> ${book.description}</p>
                <p><b>Price:</b> ${book.price}</p>
                <p><b>Available Quantity:</b> ${book.stock}</p>
+               <div class="row mt-5">
+                  <div class="col">
+               <form action="/user/addToCart/${book.id}" method="post">
+                  <button type="submit" class="btn btn-primary update-button">Add to Cart</button>
+               </form>
+                  </div>
+                     <div class="col">
+               <form action="/user/addReview/${book.id}" method="post">
+                  <button type="submit" class="btn btn-primary update-button">Add review</button>
+               </form>
+                     </div>
+               </div>
             </div>
          </div>
-         <h3 class="text-center">Comments</h3>
          <hr>
+         <h3 class="text-center">Comments</h3>
+
             <div class="containerd">
                <c:forEach var="review" items="${book.reviews}">
                <div class="card bg-light mb-3 w-100">
                   <div class="card-header d-flex">
-                        <div>${review.user.firstName} ${review.user.lastName}</div>
-                        <small class="ms-auto">edited: ${review.user.email}</small>
+                        <div class="ml-auto">${review.user.firstName} ${review.user.lastName}</div>
+                        <small class="ms-auto">created: ${review.user.email}</small>
                   </div>
                   <div class="card-body">
                      <h5 class="card-title">Excelent!</h5>

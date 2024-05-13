@@ -20,7 +20,6 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                <ul class="navbar-nav ml-auto">
-                  <li class="nav-item"><a class="nav-link" href="/user/home">Home</a></li>
                   <li class="nav-item"><a class="nav-link" href="/user/profile">Profile</a></li>
                   <li class="nav-item"><a class="nav-link" href="/user/orders">My Orders</a></li>
                   <li class="nav-item"><a class="nav-link" href="/user/logout">Logout</a></li>

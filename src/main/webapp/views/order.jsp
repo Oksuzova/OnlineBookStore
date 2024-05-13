@@ -23,7 +23,7 @@
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item"><a class="nav-link" href="/user/profile">Profile</a></li>
                 <li class="nav-item"><a class="nav-link" href="/user/cart">Cart</a></li>
-                <li class="nav-item active"><a class="nav-link" href="/user/orders">My Orders</a></li>
+                <li class="nav-item"><a class="nav-link" href="/user/orders">My Orders</a></li>
             </ul>
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item">
