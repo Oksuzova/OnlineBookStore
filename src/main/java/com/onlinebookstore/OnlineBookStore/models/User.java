@@ -4,7 +4,6 @@ import lombok.Data;
 
 import javax.persistence.*;
 import java.util.List;
-import java.util.Set;
 
 @Entity
 @Table(name = "users")
@@ -27,6 +26,7 @@ public class User {
     @Column(nullable = false)
     private String role;
 
+    @Column
     private String address;
     
     @Column(name = "first_name")
@@ -40,6 +40,9 @@ public class User {
 
     @OneToMany(mappedBy = "user")
     private List<BookReview> reviews;
+
+    @OneToMany(mappedBy = "orderId", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Order> order;
    
 	// Constructors
     public User() {}

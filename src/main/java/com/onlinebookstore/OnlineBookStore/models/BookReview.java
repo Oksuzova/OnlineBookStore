@@ -24,7 +24,7 @@ public class BookReview {
 
 
     @Setter
-    @ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
+    @ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST})
     @JoinColumn(name = "user_id")
     private User user;
 

@@ -16,7 +16,7 @@ public class Cart {
     @Column(name = "cart_id")
     private Long cartId;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "user_id", referencedColumnName = "id")
     private User user;
 

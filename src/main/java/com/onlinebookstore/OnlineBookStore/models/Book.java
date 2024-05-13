@@ -1,19 +1,14 @@
 package com.onlinebookstore.OnlineBookStore.models;
 
-import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
-import static com.fasterxml.jackson.databind.type.LogicalType.Collection;
-
+@Data
 @Entity
 @Table(name = "books")
-@Data
 public class Book {
 
     @Setter
@@ -31,8 +26,8 @@ public class Book {
     private Double price;
     private Integer stock;
 
-	@Column(name = "description", length = 4096)
-	private String description;
+    @Column(name = "description", length = 4096)
+    private String description;
 
 
     @Setter
@@ -40,15 +35,15 @@ public class Book {
     @JoinColumn(name = "category_id")
     private BookCategory category;
 
-    // Constructors, getters, and setters omitted for brevity
-    public BookCategory getCategory() {
-        if (this.category == null) {
-            this.category = new BookCategory();
-        }
-        return category;
+    public Book() {
     }
 
-	@Getter
-	@OneToMany(fetch = FetchType.EAGER, mappedBy = "book", cascade = CascadeType.ALL)
-	private List<BookReview> reviews = new ArrayList<BookReview>();
+    @Getter
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "book", cascade = CascadeType.ALL)
+    private List<BookReview> reviews = new ArrayList<BookReview>();
+
+    protected boolean canEqual(final Object other) {
+        return other instanceof Book;
+    }
+
 }

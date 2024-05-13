@@ -70,19 +70,25 @@ public class UserController {
 	
 //	Display User Home Page with Book Categories
 	@GetMapping("/home")
-	public String userHome(HttpSession session, Model model, @RequestParam(value = "category_id", required = false) Long categoryId) {
+	public String userHome(HttpSession session, Model model,
+						   @RequestParam(value = "category_id", required = false) Long categoryId,
+						   @RequestParam(value = "search_value", required = false) String searchValue) {
 	    User user = (User) session.getAttribute("user");
 	    if (user != null) {
-	    	List<Book> books = (categoryId != null && categoryId > 0) ? bookService.findBooksByCategoryId(categoryId) : bookService.getAllBooks();
+	    	List<Book> books = (categoryId != null && categoryId > 0)
+					? bookService.findBooksByCategoryId(categoryId) : bookService.getAllBooks();
+			List<Book> booksBySearch = (searchValue != null)
+					? bookService.findBooksBySearch(searchValue) : bookService.getAllBooks();
 	        List<BookCategory> categories = bookCategoryService.listAllCategories();
 	        model.addAttribute("books", books);
+			model.addAttribute("books", booksBySearch);
 	        model.addAttribute("categories", categories);
 	        model.addAttribute("selectedCategoryId", categoryId);
         return "userHome";
 	    }
 	    return "redirect:/user-login";
     }
-	
+
 //	Add Book to User's Cart
 	@PostMapping("/addToCart/{bookId}")
     public String addToCart(

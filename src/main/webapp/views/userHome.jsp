@@ -43,6 +43,9 @@
          <!-- Category Filtering Form -->
          <form action="/user/home" method="get">
             <div class="form-group">
+               <input placeholder="Search by title or author" type="text" id="searchValue" name="search_value">
+               <input type="submit" value="Search"/><br>
+
                <label for="categoryFilter">Filter by Category:</label>
                <select class="form-control" id="categoryFilter" name="category_id" onchange="this.form.submit()">
                   <option value="">All Categories</option>

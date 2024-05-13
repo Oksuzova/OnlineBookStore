@@ -1,6 +1,8 @@
 package com.onlinebookstore.OnlineBookStore.dao;
 
+import com.onlinebookstore.OnlineBookStore.models.Cart;
 import org.hibernate.SessionFactory;
+import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import com.onlinebookstore.OnlineBookStore.models.Book;
@@ -110,6 +112,17 @@ public class BookDao {
             throw new RuntimeException("Failed to update book stock: " + e.getMessage(), e);
         }
     }
-    
 
+
+    public List<Book> findBooksBySearch(String booksBySearch) {
+        try (Session session = sessionFactory.openSession()) {
+            String searchValue = "%" + booksBySearch + "%";
+            Query<Book> query =  session.createQuery("FROM Book b WHERE b.author LIKE :searchValue OR b.title LIKE :searchValue", Book.class)
+                    .setParameter("searchValue", searchValue);
+            return query.getResultList();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new ArrayList<>();
+        }
+    }
 }
