@@ -7,7 +7,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <title>Manage Book</title>
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
-         <link rel="stylesheet" href="/css/styles.css">
+      <script async src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
    </head>
    <body class="bg-light">
       <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -16,7 +16,6 @@
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
             <span class="navbar-toggler-icon"></span>
             </button>
-            <link rel="stylesheet" href="/css/styles.css">
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                <ul class="navbar-nav ml-auto">
                   <li class="nav-item"><a class="nav-link" href="/admin/book-categories">Categories</a></li>
@@ -25,7 +24,7 @@
                </ul>
                <ul class="navbar-nav ms-auto">
                   <li class="nav-item">
-                     <a class="nav-link" href="/admin/logout" data-bs-target="#myModal" data-bs-toggle="modal">Logout</a>
+                     <a class="nav-link" href="/admin/logout">Logout</a>
                   </li>
                </ul>
             </div>
@@ -82,7 +81,7 @@
                      <td>
                         <!-- Update Button -->
                         <form action="/admin/editBook/${book.id}" method="get">
-                           <button type="submit" class="btn btn-primary update-button">Update</button>
+                           <button type="submit" class="btn btn-success">Update</button>
                         </form>
                      </td>
                   </tr>
@@ -90,9 +89,5 @@
             </tbody>
          </table>
       </div>
-      <!-- Bootstrap JS and jQuery -->
-      <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
-      <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
-      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
    </body>
 </html>

@@ -7,6 +7,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <title>My Orders - Online Bookstore</title>
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+      <script async src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
    </head>
    <body class="bg-light">
       <!-- Navigation bar, similar to the one provided -->
@@ -28,7 +29,7 @@
                </ul>
                <ul class="navbar-nav ms-auto">
                   <li class="nav-item">
-                     <a class="nav-link" href="/user/logout" data-bs-target="#myModal" data-bs-toggle="modal">Logout</a>
+                     <a class="nav-link" href="/user/logout">Logout</a>
                   </li>
                </ul>
 
@@ -60,9 +61,5 @@
             </c:forEach>
          </div>
       </div>
-      <!-- Bootstrap JS and jQuery -->
-      <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
-      <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
-      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
    </body>
 </html>
