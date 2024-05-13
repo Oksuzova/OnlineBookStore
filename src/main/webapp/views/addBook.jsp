@@ -11,7 +11,7 @@
    <body class="bg-light">
       <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
          <div class="container-fluid">
-            <a class="navbar-brand" href="#">Online Bookstore</a>
+            <a class="navbar-brand" href="${pageContext.request.contextPath}/admin/home">Online Bookstore</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
             <span class="navbar-toggler-icon"></span>
             </button>

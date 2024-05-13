@@ -16,7 +16,7 @@
                   <div class="mb-md-5 mt-md-4 pb-5">
 
                      <h2 class="fw-bold mb-2 text">Welcome to Book Store</h2>
-                     <p class="text-50 mb-5">Please chous you login option</p>
+                     <p class="text-50 mb-5">Please choose you login option</p>
 
                      <div data-mdb-input-init class="form-outline form mb-4">
                         <a class="btn btn-outline-secondary form-control form-control-lg" href="${pageContext.request.contextPath}/admin-login" role="button">Admin</a>

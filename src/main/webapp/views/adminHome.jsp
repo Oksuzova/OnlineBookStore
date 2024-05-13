@@ -17,9 +17,9 @@
             <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-               <ul class="navbar-nav ml-auto">
-                  <li class="nav-item active">
-                     <a class="nav-link" href="/">Logout</a>
+               <ul class="navbar-nav ms-auto">
+                  <li class="nav-item">
+                     <a class="nav-link" href="/admin/logout" data-bs-target="#myModal" data-bs-toggle="modal">Logout</a>
                   </li>
                </ul>
             </div>

@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import com.onlinebookstore.OnlineBookStore.models.Order;
 import com.onlinebookstore.OnlineBookStore.services.OrderService;
@@ -342,5 +343,11 @@ public String editOrder(@RequestParam("id") Long id, Model model) {
         }
 
         return "redirect:/admin/orders"; // Redirect after POST to prevent duplicate submissions
+    }
+
+    @GetMapping("/logout")
+    public String logout(HttpSession session) {
+        session.invalidate();
+        return "redirect:/admin-login";
     }
 }
