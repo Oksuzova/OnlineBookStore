@@ -1,11 +1,14 @@
 package com.onlinebookstore.OnlineBookStore.models;
 
+import lombok.Data;
+
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
 @Entity
 @Table(name = "carts")
+@Data
 public class Cart {
 
     @Id
@@ -22,30 +25,6 @@ public class Cart {
 
     public Cart() {
         cartBooks = new HashSet<>();
-    }
-
-    public Long getCartId() {
-		return cartId;
-	}
-
-	public void setCartId(Long cartId) {
-		this.cartId = cartId;
-	}
-
-	public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
-
-    public Set<CartBook> getCartBooks() {
-        return cartBooks;
-    }
-
-    public void setCartBooks(Set<CartBook> cartBooks) {
-        this.cartBooks = cartBooks;
     }
 
     // Helper methods to manage the bidirectional association

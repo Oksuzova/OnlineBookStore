@@ -87,4 +87,9 @@ public class BookService {
     public List<BookCategory> getAllCategories() {
         return bookDao.findAllCategories(); // This method needs to be implemented in BookDao
     }
+
+    public List<Book> findBooksBySearch(String booksBySearch) {
+
+        return null;
+    }
 }

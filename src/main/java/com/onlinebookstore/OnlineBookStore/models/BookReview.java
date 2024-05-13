@@ -1,5 +1,6 @@
 package com.onlinebookstore.OnlineBookStore.models;
 
+import lombok.Data;
 import lombok.Setter;
 
 import javax.persistence.*;
@@ -7,6 +8,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "book_reviews")
+@Data
 public class BookReview {
 
     @Id
@@ -34,25 +36,4 @@ public class BookReview {
 
     public BookReview() {
     }
-
-    public Long getId() {
-        return this.id;
-    }
-
-    public Book getBook() {
-        return this.book;
-    }
-
-    public User getUser() {
-        return this.user;
-    }
-
-    public String getRating() {
-        return this.rating;
-    }
-
-    public String getDescription() {
-        return this.description;
-    }
-
 }
