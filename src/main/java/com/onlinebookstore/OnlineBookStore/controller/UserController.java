@@ -2,23 +2,14 @@ package com.onlinebookstore.OnlineBookStore.controller;
 
 import javax.servlet.http.HttpSession;
 
+import com.onlinebookstore.OnlineBookStore.models.*;
 import com.onlinebookstore.OnlineBookStore.services.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.util.MultiValueMap;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
-import com.onlinebookstore.OnlineBookStore.models.User;
-import com.onlinebookstore.OnlineBookStore.models.Book;
-import com.onlinebookstore.OnlineBookStore.models.BookCategory;
-import com.onlinebookstore.OnlineBookStore.models.Cart;
-import com.onlinebookstore.OnlineBookStore.models.Order;
 
 import java.util.List;
 
@@ -37,6 +28,8 @@ public class UserController {
     private CartService cartService;
 	@Autowired
 	private OrderService orderService;
+	@Autowired
+	private BookReviewService bookReviewService;
 	
 //--------------------------------------------------------------------------------------------------------------------------------------	
 
@@ -106,6 +99,26 @@ public class UserController {
 		return "redirect:/user-login";
     }
 
+	@PostMapping("/addReview/{bookId}")
+	public String addReview(
+			HttpSession session,
+			@PathVariable Long bookId,
+			@RequestBody MultiValueMap<String, String> form,
+			RedirectAttributes redirectAttributes) {
+
+		User user = (User) session.getAttribute("user");
+		if (user != null) {
+			BookReview review = new BookReview();
+			review.setUser(user);
+			review.setBook(bookService.getBookById(bookId));
+			review.setDescription(String.join("", form.get("reviewText")));
+			bookReviewService.saveBookReview(review);
+			redirectAttributes.addFlashAttribute("successMessage", "Book review added to cart successfully!");
+			return "redirect:/user/books/" + bookId;
+		}
+		return "redirect:/user-login";
+	}
+
 	@GetMapping("/books/{bookId}")
 	public String getBook(HttpSession session,
 				   @PathVariable Long bookId,
@@ -119,6 +132,7 @@ public class UserController {
 		}
 		return "redirect:/user-login";
 	}
+
 	
 //	Display User's Shopping Cart
 	@GetMapping("/cart")

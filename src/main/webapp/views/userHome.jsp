@@ -66,15 +66,13 @@
                         <p class="card-text"><b>Price:</b> ${book.price}</p>
                         <p class="card-text"><b>Available Quantity:</b> ${book.stock}</p>
                         <!-- Update Button -->
-                        <div class="row">
-                           <div class="col-6">
+                        <div class="card-footer">
+                           <div class="btn-wrapper d-flex justify-content-between">
                            <form action="/user/addToCart/${book.id}" method="post">
                               <button type="submit" class="btn btn-primary update-button">Add to Cart</button>
                            </form>
-                           </div>
-                           <div class="col-6">
-                                 <a class="btn btn-primary" href="/user/books/${book.id}">detail...</a>
-                           </div>
+                           <a class="btn btn-primary" href="/user/books/${book.id}">detail...</a>
+                        </div>
                      </div>
                   </div>
                </div>

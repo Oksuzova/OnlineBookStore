@@ -47,17 +47,17 @@
                <p><b>Description:</b> ${book.description}</p>
                <p><b>Price:</b> ${book.price}</p>
                <p><b>Available Quantity:</b> ${book.stock}</p>
-               <div class="row mt-5">
-                  <div class="col">
-               <form action="/user/addToCart/${book.id}" method="post">
-                  <button type="submit" class="btn btn-primary update-button">add to Cart</button>
-               </form>
+               <div class="d-flex justify-content-between mt-5">
+                  <div >
+                     <form action="/user/addToCart/${book.id}" method="post">
+                        <button type="submit" class="btn btn-primary update-button">add to Cart</button>
+                     </form>
                   </div>
-                     <div class="col">
-                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#reviewModal">
-                           add review
-                        </button>
-                     </div>
+                  <div class>
+                     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#reviewModal">
+                        add review
+                     </button>
+                  </div>
                </div>
             </div>
          </div>
@@ -84,17 +84,16 @@
             <div class="modal-content">
                <div class="modal-header">
                   <h5 class="modal-title" id="exampleModalLabel">add review</h5>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                </div>
-               <div class="modal-body">
-                  <form action="/user/addReview/${book.id}" method="post">
-                     <button type="submit" class="btn btn-primary update-button">add to Cart</button>
-                  </form>
-               </div>
-               <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                  <button type="button" class="btn btn-primary">Save changes</button>
-               </div>
+               <form action="/user/addReview/${book.id}" method="post">
+                  <div class="modal-body">
+                     <textarea id="reviewText" rows="6" class="form-control" name="reviewText"></textarea>
+                  </div>
+                  <div class="modal-footer">
+                     <button type="submit" class="btn btn-primary update-button">Save</button>
+                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                  </div>
+               </form>
             </div>
          </div>
       </div>
