@@ -11,15 +11,6 @@ window.addEventListener('DOMContentLoaded', (event) => {
     }
 });
 
-// Function to toggle password visibility
-function togglePassword() {
-    var passwordInput = document.getElementById("password");
-    if (passwordInput.type === "password") {
-        passwordInput.type = "text";
-    } else {
-        passwordInput.type = "password";
-    }
-}
 
 // Function to display registration error message if error parameter exists in URL
 function displayRegistrationError() {
